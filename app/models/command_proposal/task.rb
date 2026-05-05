@@ -28,7 +28,7 @@ class ::CommandProposal::Task < ApplicationRecord
     limit(per).offset(per * (page - 1))
   }
 
-  enum session_type: {
+  enum :session_type, {
     # Function iterations are much like tasks
     function: 1,
     # Task will have multiple iterations that are all essentially the same just with code changes

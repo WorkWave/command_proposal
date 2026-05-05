@@ -18,7 +18,7 @@ require_dependency "command_proposal/service/json_wrapper"
 
 class ::CommandProposal::Iteration < ApplicationRecord
   self.table_name = :command_proposal_iterations
-  serialize :args, ::CommandProposal::Service::JsonWrapper
+  serialize :args, coder: ::CommandProposal::Service::JsonWrapper
   include ::CommandProposal::Service::ExternalBelong
 
   TRUNCATE_COUNT = 2000
@@ -29,7 +29,7 @@ class ::CommandProposal::Iteration < ApplicationRecord
   external_belongs_to :requester
   external_belongs_to :approver
 
-  enum status: {
+  enum :status, {
     created:    0,
     approved:   1,
     started:    2,
